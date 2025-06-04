@@ -30,9 +30,9 @@ A modern, full-stack note-taking application built with a robust tech stack for 
 
 Before running this application, ensure you have the following installed:
 
-- Java 11 or higher
+- Java 11 or higher *Ideally Java 17+
 - Node.js (14+ recommended)
-- MySQL Server - 
+- MySQL Server 
 - Maven
 
 ## 🔧 Installation & Setup
@@ -158,6 +158,11 @@ mvn clean package
 ```bash
 npm run build
 ```
+
+## 📝 Reminder:
+1. Each developer runs mvn clean install locally.
+
+2. Each developer runs npm install in the frontend directory.
 
 ## 📝 License
 

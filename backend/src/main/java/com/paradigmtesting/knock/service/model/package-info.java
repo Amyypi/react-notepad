@@ -1,0 +1,1 @@
+package com.paradigmtesting.knock.service.model;

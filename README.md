@@ -2,6 +2,8 @@
 
 A modern, full-stack note-taking application built with a robust tech stack for seamless note management and organization.
 
+![App Screenshot](./frontend/src/assets/images/Notepad%20draft.png)
+
 ## 🚀 Features
 
 - **Intuitive Note Management**: Create, edit, delete, and organize your notes with ease

@@ -56,48 +56,47 @@
         </dependency>
 
         <!-- Database -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
-            <scope>runtime</scope>
-        </dependency>
+		<dependency>
+		    <groupId>com.mysql</groupId>
+		    <artifactId>mysql-connector-j</artifactId>
+		    <scope>runtime</scope>
+		</dependency>
 
-        <!-- H2 for development/testing -->
-        <dependency>
+		<!-- H2 for development/testing -->
+<!--		<dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
-        </dependency>
+        </dependency>-->
 
-        <!-- Lombok -->
+		<!-- Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
 
-        <!-- JSON Processing -->
+		<!-- JSON Processing -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
         </dependency>
 
-        <!-- Spring Security Test -->
+		<!-- Spring Security Test -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-        <!-- OpenAPI/Swagger Documentation (Optional) -->
+		<!-- OpenAPI/Swagger Documentation (Optional) -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.5.0</version>
         </dependency>
 
-        <!-- CORS Support Enhancement (if needed) -->
+		<!-- CORS Support Enhancement (if needed) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -120,7 +119,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Compiler Plugin -->
+			<!-- Compiler Plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -131,7 +130,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Surefire Plugin for Tests -->
+			<!-- Surefire Plugin for Tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -140,7 +139,7 @@
         </plugins>
     </build>
 
-    <!-- Profiles for different environments -->
+	<!-- Profiles for different environments -->
     <profiles>
         <profile>
             <id>dev</id>

@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import reactLogo from '../assets/images/react.svg'
-import viteLogo from '../public/vite.svg'
-import '../assets/styles/App.css'
+import reactLogo from '../../../assets/images/react.svg'
+import '../../../assets/styles/App.css'
 
-function About() {
+function Dashboard() {
     const [count, setCount] = useState(0)
 
     return (
@@ -14,9 +13,6 @@ function About() {
                 </h1>
             </div>
             <div>
-                <a href="https://vite.dev" target="_blank">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
                 <a href="https://react.dev" target="_blank">
                     <img src={reactLogo} className="logo react" alt="React logo" />
                 </a>
@@ -37,4 +33,4 @@ function About() {
     )
 }
 
-export default About
+export default Dashboard

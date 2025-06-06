@@ -1,8 +1,9 @@
 # Notepad Web Application
 
-A modern, full-stack note-taking application built with a robust tech stack for seamless note management and organization.
+A modern, full-stack note-taking application built with a robust tech stack for seamless note management and
+organization.
 
-![App Screenshot](./frontend/src/assets/images/Notepad%20draft.png)
+![App Screenshot](frontend/src/assets/images/Notepad%20draft.png)
 
 ## 🚀 Features
 
@@ -17,12 +18,14 @@ A modern, full-stack note-taking application built with a robust tech stack for 
 ## 🛠️ Tech Stack
 
 ### Backend
+
 - **Java**: Core programming language
 - **Spring Boot**: Framework for building production-ready applications
 - **Maven**: Dependency management and build automation
 - **MySQL**: Relational database for data persistence
 
 ### Frontend
+
 - **React**: Modern JavaScript library for building user interfaces
 - **Tailwind CSS**: Utility-first CSS framework for rapid UI development
 
@@ -32,7 +35,7 @@ Before running this application, ensure you have the following installed:
 
 - Java 11 or higher *Ideally Java 17+
 - Node.js (14+ recommended)
-- MySQL Server 
+- MySQL Server
 - Maven
 
 ## 🔧 Installation & Setup
@@ -41,11 +44,16 @@ Before running this application, ensure you have the following installed:
 
 1. **Clone and import the repository**
 
-    Store the project somewhere for you to access through eclipse/vscode later. Since the goal of this is to eventually separate the front end and backend, you want to close the entire repo for now.
+   Store the project somewhere for you to access through eclipse/vscode later. Since the goal of this is to eventually
+   separate the front end and backend, you want to close the entire repo for now.
 
-    **Within eclipse**, import the backend folder for now (6/4/2025) as an "existing maven project". the pom.xml file within it should be able to identify it. Note, we might eventually just import the entire repo to include the front end files, but I'm still figuring out if that's necessary within eclipse.
+   **Within eclipse**, import the backend folder for now (6/4/2025) as an "existing maven project". the pom.xml file
+   within it should be able to identify it. Note, we might eventually just import the entire repo to include the front
+   end files, but I'm still figuring out if that's necessary within eclipse.
 
-    **Within VSCode**, you can open up the entire repo (frontend and backend folders included). Although, I think we will mainly be working with the front end files here until I have it more properly setup. I'm not sure if this setup is ideal yet.
+   **Within VSCode**, you can open up the entire repo (frontend and backend folders included). Although, I think we will
+   mainly be working with the front end files here until I have it more properly setup. I'm not sure if this setup is
+   ideal yet.
 
 
 2. **Configure MySQL Database**
@@ -54,7 +62,7 @@ Before running this application, ensure you have the following installed:
 
    CREATE TABLE `note` (`id` int(11) NOT NULL, `title` varchar(45) DEFAULT NULL, `content` varchar(45) DEFAULT NULL, `createdAt` datetime NOT NULL, `updatedAt` datetime NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
    ```
-   ** If unsure how to setup a local db, you can look into XAMPP. 
+   ** If unsure how to setup a local db, you can look into XAMPP.
 
 3. **Update application.properties**.
    ```properties
@@ -63,8 +71,9 @@ Before running this application, ensure you have the following installed:
    spring.datasource.password=your_password
    spring.jpa.hibernate.ddl-auto=update
    ```
-    **You probably don't need to update this**, except for the username and password if you choose to use something else besides the default for the local db connection. I currently have it as 'root' username and a blank password as reference.
-
+   **You probably don't need to update this**, except for the username and password if you choose to use something else
+   besides the default for the local db connection. I currently have it as 'root' username and a blank password as
+   reference.
 
 
 4. **Build and run the Spring Boot application**
@@ -72,14 +81,15 @@ Before running this application, ensure you have the following installed:
    mvn clean install
    mvn spring-boot:run
    ```
-    You can also setup your own maven configuration in eclipse (so you just hit on run instead of writing it in the terminal/bash), just dm me for more info about it. Besides that, it should be using what you already have installed from the eclipse marketspace.
-
+   You can also setup your own maven configuration in eclipse (so you just hit on run instead of writing it in the
+   terminal/bash), just dm me for more info about it. Besides that, it should be using what you already have installed
+   from the eclipse marketspace.
 
 ### Frontend Setup -- CURRENTLY NOT IN
 
 1. **Navigate to frontend directory**
    ```bash
-   cd frontend
+   cd frontendaa
    ```
 
 2. **Install dependencies**
@@ -138,11 +148,13 @@ notepad-app/
 ### Running Tests
 
 **Backend:**
+
 ```bash
 mvn test
 ```
 
 **Frontend:** - NOT YET
+
 ```bash
 npm test
 ```
@@ -150,16 +162,19 @@ npm test
 ### Building for Production
 
 **Backend:**
+
 ```bash
 mvn clean package
 ```
 
 **Frontend:** - NOT YET
+
 ```bash
 npm run build
 ```
 
 ## 📝 Reminder:
+
 1. Each developer runs mvn clean install locally.
 
 2. Each developer runs npm install in the frontend directory.

@@ -13,7 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "notes")
+@Table(name = "note")
 public class Note {
 
     @Id
@@ -39,6 +39,10 @@ public class Note {
 		this.content = content;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
+	}
+	
+	public Note() {
+		super();
 	}
 
 	public Long getId() {

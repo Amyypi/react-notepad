@@ -18,34 +18,40 @@ import com.paradigmtesting.knock.model.Note;
 import com.paradigmtesting.knock.service.model.NoteService;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/notes")
-@CrossOrigin(origins = "http://localhost:3000")
 public class NoteController {
 	
     @Autowired
     NoteService noteService;
+	
+	@GetMapping(path = "/get-all-students")
+	public ResponseEntity<List<Note>> getAllNotes() { 
+		return ResponseEntity.ok(noteService.getAllNotes()); 
+	}
     
-	/*
-	 * @GetMapping public ResponseEntity<List<Note>> getAllNotes() { return
-	 * ResponseEntity.ok(noteService.getAllNotes()); }
-	 */
+	@GetMapping(path = "/test")
+	public String test() { 
+		return "All notes";
+	}
     
-    @PostMapping
+	
+    @PostMapping(path = "/create")
     public ResponseEntity<Note> createNote(@RequestBody Note note) {
         return ResponseEntity.ok(noteService.saveNote(note));
     }
     
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity<Note> getNoteById(@PathVariable Long id) {
         return ResponseEntity.ok(noteService.getNoteById(id));
     }
     
-    @PutMapping("/{id}")
+    @PutMapping(path = "/update/{id}")
     public ResponseEntity<Note> updateNote(@PathVariable Long id, @RequestBody Note note) {
         return ResponseEntity.ok(noteService.updateNote(id, note));
     }
     
-    @DeleteMapping("/{id}")
+    @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<?> deleteNote(@PathVariable Long id) {
         noteService.deleteNote(id);
         return ResponseEntity.ok().build();

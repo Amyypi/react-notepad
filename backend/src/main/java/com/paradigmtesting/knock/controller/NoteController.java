@@ -1,6 +1,7 @@
 package com.paradigmtesting.knock.controller;
 
 import java.util.List;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,8 +37,9 @@ public class NoteController {
 	}
 	
     @PostMapping(path = "/create")
-    public ResponseEntity<Note> createNote(@RequestBody Note note) {
-        return ResponseEntity.ok(noteService.saveNote(note));
+    public ResponseEntity<Note> createNote() {
+    	Note newNote = new Note();
+        return ResponseEntity.ok(noteService.saveNote(newNote));
     }
     
     @GetMapping(path = "/{id}")
@@ -47,6 +49,7 @@ public class NoteController {
     
     @PutMapping(path = "/update/{id}")
     public ResponseEntity<Note> updateNote(@PathVariable Long id, @RequestBody Note note) {
+    	note.setUpdatedAt(LocalDateTime.now());
         return ResponseEntity.ok(noteService.updateNote(id, note));
     }
     

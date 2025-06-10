@@ -17,18 +17,21 @@ import jakarta.persistence.Table;
 public class Note {
 
     @Id
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(nullable = false)
+    @Column(name = "title", nullable = false)
     private String title;
     
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "content", columnDefinition = "TEXT")
     private String content;
     
+    @Column(name = "createdAt", nullable = false, updatable = false)
     @CreationTimestamp
     private LocalDateTime createdAt;
     
+    @Column(name = "updatedAt")
     @UpdateTimestamp
     private LocalDateTime updatedAt;
     

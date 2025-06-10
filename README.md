@@ -60,7 +60,14 @@ Before running this application, ensure you have the following installed:
    ```sql
    CREATE DATABASE react_notepad_db;
 
-   CREATE TABLE `note` (`id` int(11) NOT NULL, `title` varchar(45) DEFAULT NULL, `content` varchar(45) DEFAULT NULL, `createdAt` datetime NOT NULL, `updatedAt` datetime NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+   CREATE TABLE `note` (
+   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+   `title` varchar(45) DEFAULT NULL,
+   `content` varchar(45) DEFAULT NULL,
+   `created_at` datetime(6) DEFAULT current_timestamp(6),
+   `updated_at` datetime(6) DEFAULT NULL,
+   PRIMARY KEY (`id`)
+   ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
    ```
    ** If unsure how to setup a local db, you can look into XAMPP.
 

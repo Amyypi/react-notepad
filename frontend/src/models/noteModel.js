@@ -1,9 +1,10 @@
 export class Note {
-    constructor({ id = null, title = '', content = '', tags = [] } = {}) {
+    constructor({ id = null, title = '', content = '', createdAt = null, updatedAt = null}) {
         this.id = id;
         this.title = title;
         this.content = content;
-        this.tags = tags;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     hasContent() {

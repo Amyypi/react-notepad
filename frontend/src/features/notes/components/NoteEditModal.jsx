@@ -1,39 +1,17 @@
 import React from "react";
-import axios from "axios";
-import {useEffect, useState} from "react";
+import { Typography } from '@material-tailwind/react';
 
-const NoteEditModal = (notePickId, setNotePickId) =>
-{
-    const [noteId, setNoteId] = useState("");
-    const [noteTitle, setNoteTitle] = useState("");
-    const [noteContent, setNoteContent] = useState("");
-    const [noteCreateDate, setNoteCreateDate] = useState("");
-    const [noteUpdateDate, setNoteUpdateDate] = useState("");
-    const [notes, setNotes] = useState("");
-
-    useEffect(() => {
-        (async () => await load()) ();
-    }, []);
-
-    {/* Load one note */}
-    async function load() {
-        const note = await axios.get("http://localhost:8080/api/notes/test");
-        // setNoteUpdateDate(note.updatedAt);
-        // setNoteCreateDate(note.createdAt);
-        // setNoteContent(note.content);
-        // setNoteTitle(note.title);
-        // setNoteId(note.id);
-        console.log(note.data);
-    }
-
-    {/* Save */}
-
-    {/* Delete */}
-
-    {/* Update */}
-
+const NoteEditModal = ({ note }) => {
     return (
-        <div>test upload</div>
+        <div>
+            <Typography variant="h3" color="blue-gray" className="font-light text-left pb-1">
+                {note.title}
+            </Typography>
+            <p className="mt-2 text-gray-700">
+                {note.content}
+            </p>
+            <div>noteId: {note.id}</div>
+        </div>
     )
 }
 

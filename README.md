@@ -96,6 +96,8 @@ Before running this application, ensure you have the following installed:
    ```bash
    npm install
    ```
+To view the list of packages, go to the end of this README to read the full list.
+
 
 3. **Start the development server**
    ```bash
@@ -188,3 +190,30 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Built with Spring Boot framework
 - Frontend powered by React and styled with Tailwind CSS
 - Database management with MySQL
+
+----
+
+## NPM Packages (6/9/2025):
+- @eslint/js@9.28.0
+- @fortawesome/fontawesome-svg-core@6.7.2
+- @fortawesome/free-regular-svg-icons@6.7.2
+- @fortawesome/free-solid-svg-icons@6.7.2
+- @fortawesome/react-fontawesome@0.2.2
+- @material-tailwind/react@2.1.10
+- @types/react-dom@19.1.6
+- @types/react@19.1.6
+- @types/react@19.1.6
+- @vitejs/plugin-react@4.5.1
+- autoprefixer@10.4.21
+- axios@1.9.0
+- clsx@2.1.1
+- eslint-plugin-react-hooks@5.2.0
+- eslint-plugin-react-refresh@0.4.20
+- eslint@9.28.0
+- globals@16.2.0
+- postcss@8.5.4
+- react-dom@19.1.0
+- react-router-dom@7.6.2
+- react@19.1.0
+- tailwindcss@3.4.17
+- vite@6.3.5

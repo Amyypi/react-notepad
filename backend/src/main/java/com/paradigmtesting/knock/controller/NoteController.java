@@ -25,7 +25,7 @@ public class NoteController {
     @Autowired
     NoteService noteService;
 	
-	@GetMapping(path = "/get-all-students")
+	@GetMapping(path = "/get-all-notes")
 	public ResponseEntity<List<Note>> getAllNotes() { 
 		return ResponseEntity.ok(noteService.getAllNotes()); 
 	}
@@ -34,7 +34,6 @@ public class NoteController {
 	public String test() { 
 		return "All notes";
 	}
-    
 	
     @PostMapping(path = "/create")
     public ResponseEntity<Note> createNote(@RequestBody Note note) {

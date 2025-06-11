@@ -10,4 +10,8 @@ export class Note {
     hasContent() {
         return this.content.trim().length > 0;
     }
+
+    getUpdateAt() {
+        return this.updatedAt;
+    }
 }

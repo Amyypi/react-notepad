@@ -5,7 +5,6 @@ import { Typography } from '@material-tailwind/react';
 import Header from '../../../components/Layout/Header.jsx'
 import Sidebar from '../../../components/Layout/Sidebar.jsx'
 import NoteList from '../../notes/components/NoteList.jsx';
-import NoteListItem from '../../notes/components/NoteListItem.jsx';
 import NoteEditModal from '../../../features/notes/components/NoteEditModal.jsx'
 import { Note } from '../../../models/noteModel';
 import '../../../assets/styles/App.css'
@@ -30,7 +29,6 @@ function Home() {
     }, [refreshTrigger]);
 
     async function createNote() {
-        console.log("createNote");
         const response = await axios.post('http://localhost:8080/api/notes/create');
 
         // Refresh the card item list
@@ -49,6 +47,8 @@ function Home() {
                 <main className="flex-1 overflow-y-visible pt-0 pl-6 pr-0 pb-o">
                     {/* main content container */}
                     <div className="flex col-auto h-full">
+
+
                         {/* column 1: list of notes */}
                         <div className={"bg-gray-200 h-auto w-96 rounded-tl-3xl p-10"}>
                             {/* row 1: titel */}
@@ -80,10 +80,20 @@ function Home() {
                                 />
                             </div>
                         </div>
+
+
                         {/* column 2: view of notes */}
                         <div className={"bg-white h-auto w-full p-10 text-left"}>
                             {selectedNote ? (
-                                <NoteEditModal note={selectedNote}/>
+                                <NoteEditModal
+                                    note={selectedNote}
+                                    onNoteChanged={(action) => {
+                                        setRefreshTrigger(prev => prev + 1);
+                                        if (action === 'deleted') {
+                                            setSelectedNote(null);
+                                        }
+                                    }}
+                                />
                             ) : (
                                 <p className="text-gray-500 italic">Select a note to view it</p>
                             )}

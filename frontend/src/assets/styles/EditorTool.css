@@ -28,6 +28,9 @@
     padding: 0;
 }
 
+.ql-editor {
+    padding-top: 0 !important;
+}
 .hidden-editor .ql-container {
     display: none; /* Hide the editor part */
     padding: 0;
@@ -43,3 +46,4 @@
 .ql-editor.ql-blank::before {
     @apply text-gray-600 pl-4;
 }
+

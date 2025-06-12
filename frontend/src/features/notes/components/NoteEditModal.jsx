@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 
-import { Typography } from '@material-tailwind/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash, faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
 
@@ -68,9 +67,9 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
     }
 
     return (
-        <div>
-            {/* Note tools and extra information */}
-            <div className="flex justify-between align-middle items-center p-10 pb-5">
+        <div className="h-full flex flex-col">
+            {/* Note tools and extra information - Fixed height */}
+            <div className="flex justify-between align-middle items-center p-10 pb-5 flex-shrink-0">
                 <div className="flex flex-row gap-1 items-center">
                     <p className={"text-sm text-gray-400"}>noteId: {note.id}</p>
                     <p className={"text-sm text-gray-400"}> - Updated: {note.updatedAt}</p>
@@ -78,14 +77,14 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
                 <div className="flex gap-2">
                     <button
                         type="button"
-                        className="px-4 py-3 text-sm bg-neutral-200 hover:bg-neutral-300 hover:border-none rounded border-none text-gray-700"
+                        className="px-4 py-3 text-sm primary-button rounded border-none text-gray-700"
                     >
                         {true ? 'Show Editor' : 'Show HTML'}
                     </button>
                     <button
                         onClick={updateNote}
                         disabled={isUpdating}
-                        className="px-4 py-3 text-sm bg-neutral-200 hover:bg-neutral-300 hover:border-none rounded border-none text-gray-700"
+                        className="px-4 py-3 text-sm primary-button rounded border-none text-gray-700"
                     >
                         {isUpdating ? (
                             'Saving...'
@@ -96,7 +95,7 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
                     <button
                         onClick={deleteNote}
                         disabled={isDeleting}
-                        className="px-4 py-3 text-sm bg-neutral-200 hover:bg-neutral-300 hover:border-none rounded border-none text-gray-700"
+                        className="px-4 py-3 text-sm primary-button rounded border-none text-gray-700"
                     >
                         {isDeleting ? (
                             'Deleting...'
@@ -106,24 +105,17 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
                     </button>
                 </div>
             </div>
-
-
-            {/* Note content section */}
-            <div>
-                {/* Editing tool section */}
-                <div>
-                    <EditingToolSnow
-                        note={note}
-                        onChange={(data) => {
-                            setEditedNote(prev => ({
-                                ...prev,
-                                title: data.title,
-                                content: data.content
-                            }));
-                        }}
-                    />
-                </div>
-            </div>
+            <EditingToolSnow
+                title={note.title}
+                content={note.content}
+                onChange={(data) => {
+                    setEditedNote(prev => ({
+                        ...prev,
+                        title: data.title,
+                        content: data.content
+                    }));
+                }}
+            />
         </div>
     )
 }

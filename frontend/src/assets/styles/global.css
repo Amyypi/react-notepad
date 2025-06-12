@@ -4,8 +4,37 @@
     padding: 0;
 }
 
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
 .ellipsis-text {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* Button */
+.primary-button {
+    background-color: oklch(95% 0 0);
+    transition: background-color 0.2s;
+    color: #616161;
+}
+
+.primary-button:hover {
+    background-color: oklch(87% 0 0);
 }

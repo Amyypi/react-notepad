@@ -9,7 +9,7 @@ import NoteEditModal from '../../../features/notes/components/NoteEditModal.jsx'
 import { Note } from '../../../models/noteModel';
 import '../../../assets/styles/App.css';
 import Squares from '../../../components/Background/squareBackground.jsx';
-import '../../../assets/styles/App.css';
+import '../../../assets/styles/global.css';
 
 function Home() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -56,35 +56,28 @@ function Home() {
             <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen}/>
             <div className="ml-0 flex flex-col h-full w-full transition-all duration-300">
                 <Header toggleSidebar={() => setSidebarOpen(!sidebarOpen)}/>
-                <main className="flex-1 overflow-y-visible pt-0 pl-6 pr-0 pb-o">
+                <main className="flex-1 overflow-hidden pt-0 pl-6 pr-0 pb-0">
                     {/* main content container */}
-                    <div className="flex col-auto h-full">
+                    <div className="flex h-full">
                         {/* column 1: list of notes */}
-                        <div
-                            className="bg-white/20 backdrop-blur-md border border-white/30 shadow-md rounded-tl-3xl h-auto w-96 p-10"
-                        >
-                            {/* row 1: titel */}
-                            <div className={"flex col-auto w-full "}>
-                                {/* col 1: title */}
-                                <div className={"w-1/2 text-left flex align-center"}>
-                                    <Typography
-                                        variant="h6"
-                                        className="text-gray-500 font-light text-left pb-1 align-center content-center"
-                                    >
-                                        Notes
-                                    </Typography>
-                                </div>
-                                {/* col 2: button */}
-                                <div className={"w-1/2 text-right"}>
-                                    <button
-                                        onClick={createNote}
-                                        className="bg-neutral-50 hover:bg-neutral-500 focus:outline-none border-none text-gray-700">
-                                        +
-                                    </button>
-                                </div>
+                        <div className="bg-white/20 backdrop-blur-md border border-white/30 shadow-md rounded-tl-3xl h-full w-96 flex flex-col">
+                            {/* row 1: title and button - fixed height */}
+                            <div className="flex justify-between items-center p-6 pb-4 flex-shrink-0">
+                                <Typography
+                                    variant="h6"
+                                    className="text-gray-500 font-light"
+                                >
+                                    Notes
+                                </Typography>
+                                <button
+                                    onClick={createNote}
+                                    className="primary-button focus:outline-none border-none w-8 h-8 rounded flex items-center justify-center transition-colors duration-200"
+                                >
+                                    +
+                                </button>
                             </div>
-                            {/* row 2: cards */}
-                            <div className="overflow-auto flex-grow">
+                            {/* row 2: scrollable notes list */}
+                            <div className="flex-1 overflow-y-auto px-6 pb-6 custom-scrollbar">
                                 <NoteList
                                     notes={notes}
                                     onNoteSelect={setSelectedNote}
@@ -92,9 +85,8 @@ function Home() {
                             </div>
                         </div>
 
-
                         {/* column 2: view of notes */}
-                        <div className={"bg-white h-auto w-full text-left"}>
+                        <div className="bg-white h-full flex-1">
                             {selectedNote ? (
                                 <NoteEditModal
                                     note={selectedNote}

@@ -27,3 +27,19 @@
     margin: 0 0 0 0;
     padding: 0;
 }
+
+.hidden-editor .ql-container {
+    display: none; /* Hide the editor part */
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.hidden-editor {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.ql-editor.ql-blank::before {
+    @apply text-gray-600 pl-4;
+}

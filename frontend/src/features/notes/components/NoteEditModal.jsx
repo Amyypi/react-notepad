@@ -10,9 +10,6 @@ import { EditingToolSnow } from '../../../components/Input/EditorToolSnow.jsx';
 const NoteEditModal = ({ note, onNoteChanged }) => {
     const [isUpdating, setIsUpdating] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
-    const [editedTitle, setEditedTitle] = useState(note.title);
-    const [editedContent, setEditedContent] = useState(note.content);
-
     const [editedNote, setEditedNote] = useState({...note});
 
     useEffect(() => {
@@ -46,15 +43,15 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
             if (id != null) {
                 const response = await axios.put(`http://localhost:8080/api/notes/update/` + id,
                     {
-                        title: editedTitle,
-                        content: editedContent
+                        title: editedNote.title,
+                        content: editedNote.content
                     });
                 console.log("Note Saved...");
             } else {
                 const response = await axios.post(`http://localhost:8080/api/notes/create`,
                     {
-                        title: editedTitle,
-                        content: editedContent
+                        title: editedNote.title,
+                        content: editedNote.content
                     }
                 )
             }
@@ -116,8 +113,7 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
                 {/* Editing tool section */}
                 <div>
                     <EditingToolSnow
-                        title={editedNote.title}
-                        content={editedNote.content}
+                        note={note}
                         onChange={(data) => {
                             setEditedNote(prev => ({
                                 ...prev,

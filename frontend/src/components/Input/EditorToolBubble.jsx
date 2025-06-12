@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactQuill, { Quill } from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
+import '../../assets/styles/EditorTool.css'
 
 // Register custom formats before rendering Quill
 let Inline = Quill.import('blots/inline');

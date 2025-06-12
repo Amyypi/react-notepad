@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.paradigmtesting.knock.converter.NoteConverter;
 import com.paradigmtesting.knock.model.Note;
+import com.paradigmtesting.knock.presenter.NotePresenter;
 import com.paradigmtesting.knock.service.model.NoteService;
 
 @RestController
@@ -25,15 +27,14 @@ public class NoteController {
 	
     @Autowired
     NoteService noteService;
+    
+    @Autowired
+    NoteConverter noteConverter;
 	
 	@GetMapping(path = "/get-all-notes")
-	public ResponseEntity<List<Note>> getAllNotes() { 
-		return ResponseEntity.ok(noteService.getAllNotes()); 
-	}
-    
-	@GetMapping(path = "/test")
-	public String test() { 
-		return "All notes";
+	public ResponseEntity<List<NotePresenter>> getAllNotes() { 
+		List<NotePresenter> notePresenters = noteConverter.convertList(noteService.getAllNotes());
+		return ResponseEntity.ok(notePresenters); 
 	}
 	
     @PostMapping(path = "/create")
@@ -43,8 +44,9 @@ public class NoteController {
     }
     
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Note> getNoteById(@PathVariable Long id) {
-        return ResponseEntity.ok(noteService.getNoteById(id));
+    public ResponseEntity<NotePresenter> getNoteById(@PathVariable Long id) {
+    	NotePresenter notePresenter = noteConverter.convert(noteService.getNoteById(id));
+        return ResponseEntity.ok(notePresenter);
     }
     
     @PutMapping(path = "/update/{id}")

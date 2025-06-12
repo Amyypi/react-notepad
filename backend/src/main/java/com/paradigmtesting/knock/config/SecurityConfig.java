@@ -14,8 +14,8 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/notes/**").permitAll()  // open access
-                .anyRequest().authenticated()                 // everything else is protected
+                .requestMatchers("/api/notes/**").permitAll() 
+                .anyRequest().authenticated()
             )
             .httpBasic(Customizer.withDefaults());
 

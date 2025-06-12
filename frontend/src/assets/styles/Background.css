@@ -1,0 +1,12 @@
+.bg-effect-layer {
+    z-index: -1;
+    transform: rotate(6deg);
+    filter: blur(150px);
+    left: 40px;
+    top: 170px;
+}
+
+.bg-pattern-effect-layer {
+    z-index: -2;
+    top: 0;
+}

@@ -1,6 +1,8 @@
+import UserIcon from '../../features/user/components/UserIcon.jsx'
+
 export default function Header({ toggleSidebar }) {
     return (
-        <header className="flex items-center justify-between px-3 py-3">
+        <header className="flex h-20 items-center justify-between px-3 py-3">
             <button
                 onClick={toggleSidebar}
                 className="text-gray-700 hover:text-black focus:outline-none p-2"
@@ -10,7 +12,7 @@ export default function Header({ toggleSidebar }) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
-            <h2 className="text-xl font-semibold"> </h2>
+            <UserIcon />
         </header>
     )
 }

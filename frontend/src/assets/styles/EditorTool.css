@@ -1,0 +1,29 @@
+.ql-editor {
+    padding: 2rem;
+    margin: 0;
+}
+
+.ql-container.ql-snow {
+    border: none;
+}
+
+.ql-toolbar.ql-snow {
+    border-width: .01rem 0 .01rem 0;
+    border-color: lightgray;
+    border-style: solid;
+    padding: 1rem 1.5rem 1rem 1.5rem;
+}
+
+.ql-container.ql-bubble {
+    border: none;
+}
+
+.ql-editor h1 {
+    margin: 0 0 1.5rem 0;
+    padding: 0;
+}
+
+.ql-editor p {
+    margin: 0 0 0 0;
+    padding: 0;
+}

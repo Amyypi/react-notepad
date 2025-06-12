@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 
 import { Typography } from '@material-tailwind/react';
@@ -10,7 +10,14 @@ import { EditingToolSnow } from '../../../components/Input/EditorToolSnow.jsx';
 const NoteEditModal = ({ note, onNoteChanged }) => {
     const [isUpdating, setIsUpdating] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
+    const [editedTitle, setEditedTitle] = useState(note.title);
     const [editedContent, setEditedContent] = useState(note.content);
+
+    const [editedNote, setEditedNote] = useState({...note});
+
+    useEffect(() => {
+        setEditedNote({...note});
+    }, [note]);
 
     async function deleteNote() {
         if (window.confirm('Are you sure you want to delete this note?')) {
@@ -34,12 +41,23 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
     async function updateNote() {
         setIsUpdating(true);
         try {
-            const response = await axios.put(`http://localhost:8080/api/notes/update/${note.id}`,
-                {
-                    title: note.title,
-                    content: editedContent
-                });
-            console.log("Note Saved...");
+            const id = note.id;
+
+            if (id != null) {
+                const response = await axios.put(`http://localhost:8080/api/notes/update/` + id,
+                    {
+                        title: editedTitle,
+                        content: editedContent
+                    });
+                console.log("Note Saved...");
+            } else {
+                const response = await axios.post(`http://localhost:8080/api/notes/create`,
+                    {
+                        title: editedTitle,
+                        content: editedContent
+                    }
+                )
+            }
 
             // trigger refresh in parent component
             setTimeout(() => {
@@ -55,15 +73,22 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
     return (
         <div>
             {/* Note tools and extra information */}
-            <div className="flex justify-between align-middle items-center">
+            <div className="flex justify-between align-middle items-center p-10 pb-5">
                 <div className="flex flex-row gap-1 items-center">
                     <p className={"text-sm text-gray-400"}>noteId: {note.id}</p>
                     <p className={"text-sm text-gray-400"}> - Updated: {note.updatedAt}</p>
                 </div>
                 <div className="flex gap-2">
                     <button
+                        type="button"
+                        className="px-4 py-3 text-sm bg-neutral-200 hover:bg-neutral-300 hover:border-none rounded border-none text-gray-700"
+                    >
+                        {true ? 'Show Editor' : 'Show HTML'}
+                    </button>
+                    <button
                         onClick={updateNote}
                         disabled={isUpdating}
+                        className="px-4 py-3 text-sm bg-neutral-200 hover:bg-neutral-300 hover:border-none rounded border-none text-gray-700"
                     >
                         {isUpdating ? (
                             'Saving...'
@@ -74,6 +99,7 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
                     <button
                         onClick={deleteNote}
                         disabled={isDeleting}
+                        className="px-4 py-3 text-sm bg-neutral-200 hover:bg-neutral-300 hover:border-none rounded border-none text-gray-700"
                     >
                         {isDeleting ? (
                             'Deleting...'
@@ -87,15 +113,18 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
 
             {/* Note content section */}
             <div>
-                <Typography variant="h3" color="blue-gray" className="font-light text-left pb-4">
-                    {note.title}
-                </Typography>
-
                 {/* Editing tool section */}
                 <div>
                     <EditingToolSnow
-                        content={note.content}
-                        onNoteContentChanged={setEditedContent}
+                        title={editedNote.title}
+                        content={editedNote.content}
+                        onChange={(data) => {
+                            setEditedNote(prev => ({
+                                ...prev,
+                                title: data.title,
+                                content: data.content
+                            }));
+                        }}
                     />
                 </div>
             </div>

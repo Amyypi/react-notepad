@@ -68,7 +68,6 @@ const NoteEditModal = ({ note, onNoteChanged }) => {
 
     return (
         <div className="h-full flex flex-col">
-            {/* Note tools and extra information - Fixed height */}
             <div className="flex justify-between align-middle items-center p-10 pb-5 flex-shrink-0">
                 <div className="flex flex-row gap-1 items-center">
                     <p className={"text-sm text-gray-400"}>noteId: {note.id}</p>

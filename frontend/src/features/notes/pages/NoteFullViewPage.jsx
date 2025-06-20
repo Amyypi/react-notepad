@@ -2,7 +2,7 @@ import { useState } from 'react'
 import reactLogo from '../../../assets/images/react.svg'
 import '../../../assets/styles/App.css'
 
-function NoteView() {
+function NoteFullViewPage() {
     const [count, setCount] = useState(0)
 
     return (
@@ -33,4 +33,4 @@ function NoteView() {
     )
 }
 
-export default NoteView
+export default NoteFullViewPage

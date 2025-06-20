@@ -41,6 +41,13 @@ export function EditingToolSnow({ title, content, onChange }) {
         setEditorTitle(title || '');
     }, [title, content]);
 
+    const getModules = () => ({
+        toolbar: {
+            container: toolbarRef.current || '.quill-custom-toolbar',
+        },
+        // ... other modules
+    });
+
     const handleEditorChange = (value) => {
         setEditorContent(value);
         onChange({ title: editorTitle, content: value });
@@ -54,43 +61,43 @@ export function EditingToolSnow({ title, content, onChange }) {
 
     return (
         <div className="note-editor-container flex-1 overflow-hidden flex flex-col">
-            {/* Fixed Toolbar - doesn't scroll */}
-            <div ref={toolbarRef} className="quill-custom-toolbar text-left px-4 pt-4 flex-shrink-0">
-            <span className="ql-formats">
-                <select className="ql-header" defaultValue="">
-                    <option value="1" />
-                    <option value="2" />
-                    <option value="" />
-                </select>
-                    <button className="ql-bold" />
-                    <button className="ql-italic" />
-                    <button className="ql-underline" />
-            </span>
+            <div ref={toolbarRef} className="quill-custom-toolbar text-left px-4 pt-4 flex-shrink-0 text-gray-800">
                 <span className="ql-formats">
-                <button className="ql-image" />
-                <button className="ql-video" />
-            </span>
+                    <select className="ql-font" defaultValue="">
+                        <option value="Sans Serif" />
+                        <option value="Serif" />
+                        <option value="Monospace" />
+                    </select>
+                    <select className="ql-header" defaultValue="">
+                        <option value="1" />
+                        <option value="2" />
+                        <option value="" />
+                    </select>
+                        <button className="ql-bold" />
+                        <button className="ql-italic" />
+                        <button className="ql-underline" />
+                        <select className="ql-color" />
+                        <select className="ql-background" />
+                </span>
                 <span className="ql-formats">
-                <button className="ql-list" value="ordered" />
-                <button className="ql-list" value="bullet" />
-            </span>
+                    <button className="ql-image" />
+                    <button className="ql-video" />
+                </span>
                 <span className="ql-formats">
-                <select className="ql-color" />
-                <select className="ql-background" />
-            </span>
+                    <button className="ql-list" value="ordered" />
+                    <button className="ql-list" value="bullet" />
+                </span>
                 <span className="ql-formats">
-                <button className="ql-clean" />
-            </span>
+                    <button className="ql-clean" />
+                </span>
             </div>
-
-            {/* Scrollable Content Area - title and editor */}
             <div className="flex-1 overflow-y-auto custom-scrollbar">
                 <input
                     type="text"
                     placeholder="Untitled"
                     value={editorTitle}
                     onChange={handleTitleChange}
-                    className="text-3xl font-bold outline-none w-full pb-4 pt-6 px-8"
+                    className="text-3xl font-bold outline-none w-full pb-4 pt-6 px-8 overflow-hidden"
                 />
                 <ReactQuill
                     ref={quillRef}

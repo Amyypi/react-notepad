@@ -7,11 +7,12 @@ import Sidebar from '../../../components/Layout/Sidebar.jsx';
 import NoteList from '../../notes/components/NoteList.jsx';
 import NoteEditModal from '../../../features/notes/components/NoteEditModal.jsx';
 import { Note } from '../../../models/noteModel';
-import '../../../assets/styles/App.css';
 import Squares from '../../../components/Background/squareBackground.jsx';
+
+import '../../../assets/styles/App.css';
 import '../../../assets/styles/global.css';
 
-function Home() {
+function NoteListPage() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [selectedNote, setSelectedNote] = useState(null);
     const [notes, setNotes] = useState([]);
@@ -108,4 +109,4 @@ function Home() {
     )
 }
 
-export default Home
+export default NoteListPage

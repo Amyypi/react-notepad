@@ -1,15 +1,14 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from '../features/workspace/pages/Home.jsx';
-import NoteListPage from '../features/notes/pages/NoteList.jsx';
-import NoteViewPage from '../features/notes/pages/NoteView.jsx';
+import NoteListPage from '../features/notes/pages/NoteListPage.jsx';
+import NoteFullViewPage from '../features/notes/pages/NoteFullViewPage.jsx';
 import WorkspaceDashboard from '../features/workspace/pages/Dashboard.jsx';
 
 function AppRoutes() {
     return (
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<NoteListPage />} />
             <Route path="/notes" element={<NoteListPage />} />
-            <Route path="/notes/:id" element={<NoteViewPage />} />
+            <Route path="/notes/:id" element={<NoteFullViewPage />} />
             <Route path="/workspace" element={<WorkspaceDashboard />} />
         </Routes>
     );
